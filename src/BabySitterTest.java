@@ -26,4 +26,12 @@ public class BabySitterTest {
 		assertEquals("Please enter a proper time!", babysitter.pay(12, "PM", 5, "PM"));
 		assertEquals("Please enter a proper time!", babysitter.pay(7, "PM", 12, "PM"));
 	}
+	@Test
+	public void StartTimeIsBeforeEndTime(){
+		assertEquals("You entered a good start time!", babysitter.pay(7, "PM", 3, "AM"));
+		assertEquals("You entered a good start time!", babysitter.pay(7, "PM", 9, "PM"));
+		assertEquals("You entered a good start time!", babysitter.pay(12, "AM", 4, "AM"));
+		assertEquals("Please enter a proper time!", babysitter.pay(9, "PM", 7, "PM"));
+		assertEquals("Please enter a proper time!", babysitter.pay(2, "AM", 12, "AM"));
+	}
 }
