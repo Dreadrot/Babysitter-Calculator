@@ -19,7 +19,11 @@ public class BabySitterTest {
 	
 	@Test
 	public void WhenBabysitterIsPassedAnEndTimeItEndsAtOrBeforeFourAM() {
-		assertEquals("You entered a good start time!", babysitter.pay(7, "PM", 12, "PM"));
+		assertEquals("You entered a good start time!", babysitter.pay(7, "PM", 3, "AM"));
 	}
-	
+	@Test
+	public void WhenBabysitterIsPassedBothTimesNeitherOfThemAreNoon() {
+		assertEquals("Please enter a proper time!", babysitter.pay(12, "PM", 5, "PM"));
+		assertEquals("Please enter a proper time!", babysitter.pay(7, "PM", 12, "PM"));
+	}
 }
