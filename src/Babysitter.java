@@ -23,7 +23,21 @@ public class Babysitter {
 			return "Please enter a proper time!";
 		}
 		
-			return "You entered a good start time!";
+		int hoursWorked = endTime - startTime;
+		int totalPay = 0;
+		if(endTimeAMOrPM.equalsIgnoreCase("AM") && !(endTime==12)){
+			hoursWorked += 12;
+		}
+		
+		for(int i = startTime; i < 9 && startTimeAMOrPM.equalsIgnoreCase("PM") && i < endTime; i++){
+			totalPay += 12;
+		}
+		if(totalPay != 0){
+			return "$" + String.valueOf(totalPay);
+		}else{
+			return "You entered a good time!";
+		}
+		
 	}
 
 }
