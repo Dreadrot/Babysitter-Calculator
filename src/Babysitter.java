@@ -9,7 +9,7 @@ public class Babysitter {
 			return "Please enter a proper time!";
 		}
 	//end time qualifications
-		if(endTime > 4 && !endTimeAMOrPM.equalsIgnoreCase("PM")){
+		if(endTime > 4 && !endTimeAMOrPM.equalsIgnoreCase("PM") && endTime != 12){
 			return "Please enter a proper time!";
 		}else if(endTime > 12 || (endTime == 12 && !endTimeAMOrPM.equalsIgnoreCase("AM"))){
 			return "Please enter a proper time!";
@@ -19,19 +19,30 @@ public class Babysitter {
 			return "Please enter a proper time!";
 		}else if(startTimeAMOrPM.equalsIgnoreCase("PM") && endTimeAMOrPM.equalsIgnoreCase("PM") && startTime >= endTime){
 			return "Please enter a proper time!";
-		}else if(startTimeAMOrPM.equalsIgnoreCase("AM") && endTimeAMOrPM.equalsIgnoreCase("AM") && startTime >= endTime && startTime != 12){
-			return "Please enter a proper time!";
+		}else if(startTimeAMOrPM.equalsIgnoreCase("AM") && endTimeAMOrPM.equalsIgnoreCase("AM")){
+			if(startTime >= endTime && startTime != 12){
+				return "Please enter a proper time!";				
+			}else if(endTime==12){
+				return "Please enter a proper time!";
+			}
 		}
 		
-		int hoursWorked = endTime - startTime;
 		int totalPay = 0;
+		int timeConvert = endTime;
 		if(endTimeAMOrPM.equalsIgnoreCase("AM") && !(endTime==12)){
-			hoursWorked += 12;
+			timeConvert += 12;
+		}
+		int workTime = startTime;
+		for(int i = workTime; i < 9 && startTimeAMOrPM.equalsIgnoreCase("PM") && i < endTime; i++){
+			totalPay += 12;
+			workTime++;
 		}
 		
-		for(int i = startTime; i < 9 && startTimeAMOrPM.equalsIgnoreCase("PM") && i < endTime; i++){
-			totalPay += 12;
+		for(int i = workTime; i >= 9 && i < 12 && i < timeConvert; i++){
+			totalPay += 8;
+			workTime++;
 		}
+		
 		if(totalPay != 0){
 			return "$" + String.valueOf(totalPay);
 		}else{
