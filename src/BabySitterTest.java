@@ -42,4 +42,9 @@ public class BabySitterTest {
 		assertEquals("$28", babysitter.pay(8, "PM", 11, "PM"));
 		assertEquals("$24", babysitter.pay(9, "PM", 12, "AM"));
 	}
+	@Test
+	public void EveryHourWorkedBetweenMidnightAndFourAddsSixteenDollars(){
+		assertEquals("$32", babysitter.pay(1, "AM", 3, "AM"));
+		assertEquals("$48", babysitter.pay(12, "AM", 3, "AM"));
+	}
 }

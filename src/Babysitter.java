@@ -32,6 +32,7 @@ public class Babysitter {
 		if(endTimeAMOrPM.equalsIgnoreCase("AM") && !(endTime==12)){
 			timeConvert += 12;
 		}
+		
 		int workTime = startTime;
 		for(int i = workTime; i < 9 && startTimeAMOrPM.equalsIgnoreCase("PM") && i < endTime; i++){
 			totalPay += 12;
@@ -40,6 +41,11 @@ public class Babysitter {
 		
 		for(int i = workTime; i >= 9 && i < 12 && i < timeConvert; i++){
 			totalPay += 8;
+			workTime++;
+		}
+		
+		for(int i = workTime; (i >= 12 && i < timeConvert) || (i < 4 && i < endTime); i++){
+			totalPay += 16;
 			workTime++;
 		}
 		
