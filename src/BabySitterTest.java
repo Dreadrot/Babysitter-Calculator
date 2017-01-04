@@ -45,6 +45,12 @@ public class BabySitterTest {
 	@Test
 	public void EveryHourWorkedBetweenMidnightAndFourAddsSixteenDollars(){
 		assertEquals("$32", babysitter.pay(1, "AM", 3, "AM"));
-		assertEquals("$48", babysitter.pay(12, "AM", 3, "AM"));
+		assertEquals("$64", babysitter.pay(12, "AM", 4, "AM"));
+	}
+	@Test
+	public void WorkingThroughDifferentPaymentTimesStillPaysAllOfThemCorrectly(){
+		assertEquals("$136", babysitter.pay(5, "PM", 4, "AM"));
+		assertEquals("$52", babysitter.pay(8, "PM", 1, "AM"));
+		assertEquals("$72", babysitter.pay(11, "PM", 4, "AM"));
 	}
 }
